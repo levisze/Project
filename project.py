@@ -1,8 +1,6 @@
 import streamlit as st 
-import math
 import pandas as pd
 import numpy as np
-import csv
 import plotly.express as px
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
@@ -40,19 +38,60 @@ with st.expander("Cleanned data"):
 #st.line_chart(chart_data)
 df.describe()
 fig, ax = plt.subplots()
-sns.set(font_scale=1)
 sns.heatmap(df.corr(), ax=ax, annot=True)
 st.write(fig)
 #df.groupby(['Risk level'])
+plt.rcParams["figure.dpi"] = 300
+
+sns.set_theme()
+
+
+def main():
+    st.header("Summary")
+
+    df = pd.read_csv("MPF_cleanned.csv")
+
+    df.drop(columns=df.columns[0], axis=1, inplace=True)
+    df.drop(columns=df.columns[df.columns.str.startswith(' Calendar Year')], axis=1, inplace=True)
+    df.dropna(inplace=True)
+    df["Risk level"] = df["Risk level"].astype(int)
+
+    # plot 1
+
+    groups = df.groupby("Risk level").agg(["mean", "max"]).T.unstack()
+    groups.index = groups.index.str.replace(r".*:\s?", "", regex=True)
+    ax = groups.plot(style=["--", "-"] * 6, figsize=(9, 8))
+    plt.legend(title="Risk Level")
+    plt.xlabel("Period")
+    plt.ylabel("Return (%)")
+    plt.title("Cumulative Return across Period")
+    st.pyplot(ax.get_figure())
+
+    # plot 2
+    groups = df.groupby("Risk level").agg(["mean", "max"])
+
+    # rename columns
+    legends = groups.columns.unique(level=0)
+    legends = legends.str.replace(r"Cumulative Return:\s?", "", regex=True)
+    groups.columns = groups.columns.set_levels(legends, level=0)
+
+    ax = groups.plot(style=["--", "-"] * 6, figsize=(9, 8))
+    plt.legend(title="Period")
+    plt.ylabel("Return (%)")
+    plt.title("Cumulative Return across Risk level")
+    st.pyplot(ax.get_figure())
+
+
+if __name__ == "__main__":
+    main()
 
 
 
 
 
-
-df = df.fillna(0)
-df.groupby('Risk level').describe()
-df.mean()
+#df = df.fillna(0)
+#df.groupby('Risk level').describe()
+#df.mean()
 
 
 
