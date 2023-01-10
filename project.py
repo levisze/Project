@@ -3,8 +3,6 @@ import math
 import pandas as pd
 import numpy as np
 import csv
-import json
-import PyPDF2
 import plotly.express as px
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
