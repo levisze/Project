@@ -13,7 +13,7 @@ st.set_page_config(
 )
 st.title('Manulife MPF Data Analysis Project')
 st.header ('Group 2')
-st.text('Member: Eugene Erika Levi')
+st.subheader('Member: Eugene Erika Levi')
 
 
 df = pd.read_csv("MPF_not_clean.csv")
