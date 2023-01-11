@@ -12,7 +12,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-st.title('Manulife MPF Data Analysis Project :moneybag: :dollar:')
+st.title('Manulife MPF Data Analysis Project :moneybag: :dollar: ')
 st.header ('Group 2')
 st.subheader('Member: Eugene Erika Levi')
 
