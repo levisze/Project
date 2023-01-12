@@ -1,3 +1,5 @@
+import functools
+from pathlib import Path
 import streamlit as st 
 import pandas as pd
 import numpy as np
@@ -12,11 +14,31 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
+
 st.title('Manulife MPF Data Analysis Project :moneybag: :dollar: ')
 st.header ('Group 2 ')
 st.subheader('Member: Eugene Erika Levi')
-
-
+st.text('''
+''')
+expander = st.subheader("Project planning:")
+st.markdown('''
+    **:red[Financial Analysis:]**
+    \n:blue[-What data can we get from the website?]
+    \n:blue[-Is possibility of scrapping the website?]
+    \n:blue[-What data must be analysing?]
+''')
+st.markdown('''
+    **:red[Data Collection:]**
+    \n:blue[Scraping Manulife MPF Website (Constituent Fund, Cumulative Return, Risk Level)]
+''')
+st.markdown('''
+    **:red[Data Cleaning & transformation:]**
+    \n:blue[Remove the unrelated data, transform the data in efficient format.]
+''')
+st.markdown('''
+    **:red[Data Visualization:]**
+    \n:blue[Show the useful information. ]
+''')
 
 
 df = pd.read_csv("MPF_not_clean.csv")
