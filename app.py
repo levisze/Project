@@ -12,7 +12,7 @@ from streamlit_pandas_profiling import st_profile_report
 
 st.set_page_config(
     page_title="Project",
-    layout="wide",
+    layout="centered",
     initial_sidebar_state="collapsed",
 )
 
@@ -58,8 +58,9 @@ with st.expander("Cleanned data"):
     
 data1 = pd.read_csv("MPF_cleanned.csv")     
 pr = data1.profile_report()
-st.expander("Report",expanded=True)
-st_profile_report(pr) 
+df1 = data1.fillna(0)
+with st.expander("Report",expanded=True):
+    st_profile_report(pr) 
 
 
 
