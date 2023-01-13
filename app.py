@@ -21,7 +21,7 @@ st.title('Manulife MPF Data Analysis Project :moneybag: :dollar: ')
 st.header ('Group 2 ')
 st.subheader('Member: Eugene Erika Levi')
 st.text('''
-    **Data as of November 30, 2022**
+    ***Data as of November 30, 2022***
 ''')
 expander = st.subheader("Project planning:")
 st.markdown('''
@@ -90,6 +90,16 @@ def main():
     plt.title("Cumulative Return across Period")
     st.pyplot(ax.get_figure())
 
+    st.markdown('''
+     **Under current market condition, different asset classes are affected in different ways
+     and to a different extant. Apart from risk 5 return, given to others risk level products return in 6 month to 5 years
+     fell behind 0.**
+ ''')   
+    st.markdown('''
+    **High risk products have a bad started but the return will grow with the increase of time.
+    Given to all risk level products, Risk 5 have the best return comparing to others.**
+''')
+
     # plot 2
     groups = data2.groupby("Risk level").agg(["mean", "max"])
 
@@ -104,6 +114,12 @@ def main():
     plt.title("Cumulative Return across Risk level")
     st.pyplot(ax.get_figure())
 
+    st.markdown('''
+    **Returns of less than 1 year investment were fell when the risk level was getting higher and higher.**   
+''')
+    st.markdown('''
+    **Given to all risk level products, Risk 5 investments are positive when more than 3years.**
+''')
     #plot 3
     a1 = df[['Cumulative Return: 6month','Constituent Fund']].sort_values(by='Cumulative Return: 6month',ascending=False)[0:30]
     a1['Period'] = '6month'
@@ -148,6 +164,29 @@ def main():
     plt.savefig("Best Cumulative Return across Period", bbox_inches='tight')
     st.pyplot(ax.get_figure())
 
+    st.markdown('''
+    **Best 3 of 6 month investment: 1.Healthcare Fund 2.Conservative Fund 3.Interest Fund**
+''')
+    st.markdown('''
+    **Best 3 of 1 year investment: 1.International Bond Fund 2.Healthcare Fund 3.Interest Fund**
+''')
+    st.markdown('''
+    **Best 3 of 3 year investment: 1.Healthcare Fund 2.North American Equity Fund 3.European Equity Fund**
+''')
+    st.markdown('''
+    **Best 3 of 5 year investment: 1.Healthcare Fund 2.North American Equity Fund 3.European Equity Fund**
+''')
+
+    st.header('Conclusion')
+    st.markdown('''
+    **As we already know, collecting data on Constituent Fund, Cumulative Return, Risk Level has allowed current customers or 
+    potential customers to empower with knowledge about Manulife MPF service.**
+''')
+    st.subheader('Price volatility')
+    st.markdown('''
+    **Market volatility maybe of concern to anxious investors whose focus is on the short-term. However, for 
+    longer-term investors who invest for retirement in the MPF, market fluctuation along the way are inevitable.**    
+''')
 
 
 
