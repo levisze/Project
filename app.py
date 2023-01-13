@@ -25,7 +25,12 @@ st.text('''
 ''')
 expander = st.subheader("Project planning:")
 st.markdown('''
-    **:red[Financial Analysis:]**
+    **:red[About Manulife:]**
+    \n:blue[Manulife is the No.1 MPF service provider in Hong Kong, according to the Mercer MPF Market Shares Report.
+    Also they are No.1 in MPF market share, around 27%. ]
+ ''')   
+st.markdown(''' 
+    **:red[Questions:]**
     \n:blue[-What data can we get from the website?]
     \n:blue[-Is possibility of scrapping the website?]
     \n:blue[-What data must be analysing?]
@@ -65,7 +70,7 @@ with st.expander("Report",expanded=True):
 
 
 def main():
-    st.header("Summary")
+    st.header("Analysis")
 
     data2 = pd.read_csv("MPF_cleanned.csv")
 
@@ -99,17 +104,63 @@ def main():
     plt.title("Cumulative Return across Risk level")
     st.pyplot(ax.get_figure())
 
+    #plot 3
+    a1 = df[['Cumulative Return: 6month','Constituent Fund']].sort_values(by='Cumulative Return: 6month',ascending=False)[0:30]
+    a1['Period'] = '6month'
+    a1 = a1.reset_index()
+    a1 = a1.drop(['index'],axis=1)
+    a1 = a1.rename(columns={'Cumulative Return: 6month': 'Return',})
+
+
+    a2 = df[['Cumulative Return: 1year','Constituent Fund']].sort_values(by='Cumulative Return: 1year',ascending=False)[0:30]
+    a2['Period'] = '1year'
+    a2 = a2.reset_index()
+    a2 = a2.drop(['index'],axis=1)
+    a2 = a2.rename(columns={'Cumulative Return: 1year': 'Return'})
+
+
+    a3 = df[['Cumulative Return: 3years','Constituent Fund']].sort_values(by='Cumulative Return: 3years',ascending=False)[0:30]
+    a3['Period'] = '3years'
+    a3 = a3.reset_index()
+    a3 = a3.drop(['index'],axis=1)
+    a3 = a3.rename(columns={'Cumulative Return: 3years': 'Return'})
+
+
+    a4 = df[['Cumulative Return:5years','Constituent Fund']].sort_values(by='Cumulative Return:5years',ascending=False)[0:30]
+    a4['Period'] = '5years'
+    a4 = a4.reset_index()
+    a4 = a4.drop(['index'],axis=1)
+    a4 = a4.rename(columns={'Cumulative Return:5years': 'Return'})
+
+
+    total = pd.concat([a1,a2,a3,a4])
+    total = total.reset_index()
+    total = total.drop(['index'],axis=1)
+    total = total.rename(columns={'Constituent Fund': 'Fund'})
+
+
+    plt.figure(figsize=(10,10))
+    ax = sns.scatterplot(x = total.Period, y = total.Return, hue = total.Fund, s = 100)
+    plt.legend(bbox_to_anchor=(1.05, 1),title='Constituent Fund')
+    plt.title("Best Cumulative Return across Period",fontsize = 20)
+    plt.xlabel("Period")
+    plt.ylabel("Return (%)")
+    plt.savefig("Best Cumulative Return across Period", bbox_inches='tight')
+    st.pyplot(ax.get_figure())
+
+
+
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     main()
 
-
-
-
-
-#df = df.fillna(0)
-#df.groupby('Risk level').describe()
-#df.mean()
 
 
 
