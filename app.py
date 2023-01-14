@@ -45,7 +45,9 @@ st.markdown('''
 ''')
 st.markdown('''
     **:red[Data Visualization:]**
-    \n:blue[Show the useful information. ]
+    \n:blue[1.Cumulative Return across Period.]
+    \n:blue[2.Cumulative Return across Risk level.]
+    \n:blue[3.Best Cumulative Return across Period.]
 ''')
 
 
