@@ -184,6 +184,11 @@ def main():
     **As we already know, collecting data on Constituent Fund, Cumulative Return, Risk Level has allowed current customers or 
     potential customers to empower with knowledge about Manulife MPF service.**
 ''')
+    st.markdown('''
+    **Healthcare Fund had a best return in 6month, 3year, and 5year investment. It maybe affected by Covid-19. Also, NA & EU Equity Fund
+    had a great return in long-term. But we can see that Hang Seng Index Tracking Fund, HK Equity Fund, and chia value fund had a
+    bad return in short-term & long-term. It maybe affected by china & HK poilcy.**
+''')
     st.subheader('Price volatility')
     st.markdown('''
     **Market volatility maybe of concern to anxious investors whose focus is on the short-term. However, for 
