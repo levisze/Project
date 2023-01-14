@@ -188,7 +188,7 @@ def main():
 ''')
     st.markdown('''
     **Healthcare Fund had a best return in 6month, 3year, and 5year investment. It maybe affected by Covid-19. Also, NA & EU Equity Fund
-    had a great return in long-term. But we can see that Hang Seng Index Tracking Fund, HK Equity Fund, and chia value fund had a
+    had a great return in long-term. But we can see that Hang Seng Index Tracking Fund, HK Equity Fund, and china value fund had a
     bad return in short-term & long-term. It maybe affected by china & HK poilcy.**
 ''')
     st.subheader('Price volatility')
