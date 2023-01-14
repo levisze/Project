@@ -31,6 +31,8 @@ st.markdown('''
  ''')   
 st.markdown(''' 
     **:red[Questions:]**
+    \n:blue[-Is higher risk level Fund can get a better return?]
+    \n:blue[-Is there a positive correlation between the investment period and return rate?]
     \n:blue[-What data can we get from the website?]
     \n:blue[-Is possibility of scrapping the website?]
     \n:blue[-What data must be analysing?]
